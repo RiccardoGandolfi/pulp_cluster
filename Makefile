@@ -37,7 +37,7 @@ endef
 ######################
 
 NONFREE_REMOTE ?= git@iis-git.ee.ethz.ch:pulp-restricted/pulp-cluster-nonfree.git
-NONFREE_COMMIT ?= 67079fe
+NONFREE_COMMIT ?= b803843e15ee9cef8dd66d51ed5f4187bb2cc624 # branch: smazzola/chimera
 
 nonfree-init:
 	git clone $(NONFREE_REMOTE) nonfree
@@ -75,7 +75,7 @@ sw-clean:
 
 ## Clone pulp-runtime as SW stack
 PULP_RUNTIME_REMOTE ?= https://github.com/pulp-platform/pulp-runtime.git
-PULP_RUNTIME_COMMIT ?= b3c239c # branch: lg/upstream
+PULP_RUNTIME_COMMIT ?= 7ea7b36462d3257ae251f17541c21dcefd9fbc75 # branch: smazzola/chimera
 
 pulp-runtime:
 	git clone $(PULP_RUNTIME_REMOTE) $@
@@ -91,7 +91,7 @@ fault_injection_sim:
 
 ## Clone regression tests
 REGRESSION_TESTS_REMOTE ?= https://github.com/pulp-platform/regression_tests.git
-REGRESSION_TESTS_COMMIT ?= d43cb0d # branch: lg/upstream
+REGRESSION_TESTS_COMMIT ?= d75a64ae0af42d406d1b73137331b84161810be9 # branch: smazzola/chimera
 
 regression_tests:
 	git clone $(REGRESSION_TESTS_REMOTE) $@
