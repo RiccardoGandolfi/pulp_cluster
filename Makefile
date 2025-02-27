@@ -98,13 +98,32 @@ regression_tests:
 	cd $@ && git checkout $(REGRESSION_TESTS_COMMIT)
 	cd $@ && git submodule update --init --recursive
 
+#########################
+# Hardware dependencies #
+#########################
+
+# Set dependency paths only if dependencies have already been cloned
+# This avoids running `bender checkout` at every make command
+ifeq ($(shell test -d $(ROOT_DIR)/.bender || echo 1),)
+IDMA_ROOT := $(shell $(BENDER) path idma)
+endif
+
+# Fall back to safe defaults if dependencies are not cloned yet
+IDMA_ROOT ?= .
+
+gen_idma_hw:
+	make -C $(IDMA_ROOT) idma_hw_all
+
+clean_idma_hw:
+	make -C $(IDMA_ROOT) idma_clean_all
+
 ########################
 # Build and simulation #
 ########################
 
 .PHONY: sim-clean compile build run
 
-sim-clean:
+sim-clean: clean_idma_hw
 	rm -rf scripts/compile.tcl
 	rm -rf work
 
