@@ -15,6 +15,13 @@ packages:
     - common_cells
     - common_verification
     - tech_cells_generic
+  axi_stream:
+    revision: 54891ff40455ca94a37641b9da4604647878cc07
+    version: 0.1.1
+    source:
+      Git: https://github.com/pulp-platform/axi_stream.git
+    dependencies:
+    - common_cells
   axi2mem:
     revision: b0e963433b2f6a61262b1448031e74eaec57c203
     version: null
@@ -158,16 +165,26 @@ packages:
     source:
       Git: https://github.com/pulp-platform/icache-intc.git
     dependencies: []
+  obi:
+    revision: c2141a653c755461ff44f61d12aeb5d99fc8e760
+    version: 0.1.3
+    source:
+      Git: https://github.com/pulp-platform/obi.git
+    dependencies:
+    - common_cells
+    - common_verification
   idma:
-    revision: 437ffa9dac5dea0daccfd3e8ae604d4f6ae2cdf1
+    revision: null
     version: null
     source:
-      Git: https://github.com/pulp-platform/iDMA.git
+      Path: working_dir/idma
     dependencies:
     - axi
+    - axi_stream
     - common_cells
     - common_verification
     - register_interface
+    - obi 
   l2_tcdm_hybrid_interco:
     revision: fa55e72859dcfb117a2788a77352193bef94ff2b
     version: 1.0.0
